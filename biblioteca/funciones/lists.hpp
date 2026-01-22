@@ -127,8 +127,8 @@ template <typename T>
 Node<T>* searchAndInsert(Node<T>*& p,T e,bool& enc,int cmpTT(T,T))
 {
 //   Busca en p la primera ocurrencia de e, y retorna el nodo que lo contiene.
-//   Si e no existe en p lo insertar en orden, según cmpTT, y retorna el nodo insertado.
-//   Asigna true o false a enc según e fue encontrado o insertado.
+//   Si e no existe en p lo insertar en orden, segÃºn cmpTT, y retorna el nodo insertado.
+//   Asigna true o false a enc segÃºn e fue encontrado o insertado.
 
    enc=true;
    if(p==NULL)
