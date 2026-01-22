@@ -21,7 +21,7 @@ int tokenCount(string s,char sep)//te dice cuantos tokens hay en base al numero 
    return a+1;
 }
 
-void addToken(string& s,char sep,string t)//añade un token nuevecito al final del string
+void addToken(string& s,char sep,string t)//aÃ±ade un token nuevecito al final del string
 {
    if(s=="")
    {
