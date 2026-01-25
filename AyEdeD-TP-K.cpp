@@ -16,15 +16,17 @@ using namespace std;
 int main(int argc,char** argv)
 {
     string nomArch = argv[1];
+    InfoByte arr[256];
  
       // comprimo o descomprimo
       if( endsWith(nomArch,".huf") )
       {
-         descomprimir(nomArch);
+         inicInfoByte(arr);
+         descomprimir(nomArch, arr);
       }
       else
       {
-         comprimir(nomArch);
+         comprimir(nomArch, arr);
       }
 
 

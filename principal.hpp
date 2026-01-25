@@ -10,18 +10,11 @@
 
 using namespace std;
 
-struct InfoByte
-{
-   unsigned int n; // cuantas veces aparece el byte
-   string cod;
-};
 
-// Inicializa el arreglo de InfoByte
-void inicInfoByte(InfoByte arr[]);
 // Comprime el archivo original y genera un .huf
-void comprimir(string nomArchOri);
+void comprimir(string nomArchOri, InfoByte arr[]);
 // Descomprime un archivo .huf y reconstruye el original
-void descomprimir(string nomArchCompr);
+void descomprimir(string nomArchCompr, InfoByte arr[]);
 
 
 #endif

@@ -17,7 +17,7 @@
 #include "biblioteca/tads/huffman/HuffmanSetup.hpp"
 #include "biblioteca/tads/huffman/BitReader.hpp"
 #include "biblioteca/tads/huffman/BitWriter.hpp"
-#include "principal.hpp"
+#include "infoByte.hpp"
 
 void paso1Desc(string nomArchCompr,InfoByte arr[],int& pos);
 void paso2Desc(string nomArchCompr,InfoByte arr[],int pos);

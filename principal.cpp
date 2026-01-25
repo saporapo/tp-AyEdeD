@@ -1,23 +1,6 @@
 #include "principal.hpp"
 
-
-InfoByte arr[256];
-
-
-InfoByte infoByte()
-{
-   return {0,""};
-}
-
-void inicInfoByte(InfoByte a[])
-{
-   for(int i=0; i<256; i++)
-   {
-      a[i]=infoByte();
-   }
-}
-
-void comprimir(string nomArchOri)
+void comprimir(string nomArchOri, InfoByte arr[])
 {
    inicInfoByte(arr);
 
@@ -37,10 +20,8 @@ void comprimir(string nomArchOri)
    paso5(nomArchOri,arr);
 }
 
-void descomprimir(string nomArchCompr)
+void descomprimir(string nomArchCompr, InfoByte arr[])
 {
-   inicInfoByte(arr);
-
    int pos=0; //para guardar pos en archivo y no recorrer arbol de nuevo
 
    //conseguir arbol
