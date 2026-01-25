@@ -1,7 +1,5 @@
-
-
-#ifndef BITWRITER
-#define BITWRITER
+#ifndef BITREADER
+#define BITREADER
 
 #include <iostream>
 #include <stdio.h>

@@ -3,19 +3,20 @@
 
 #include <iostream>
 #include <stdio.h>
-#include "biblioteca/funciones/strings.hpp"
-#include "biblioteca/funciones/tokens.hpp"
-#include "biblioteca/funciones/files.hpp"
-#include "biblioteca/tads/Array.hpp"
-#include "biblioteca/tads/Map.hpp"
-#include "biblioteca/tads/List.hpp"
-#include "biblioteca/tads/Stack.hpp"
-#include "biblioteca/tads/Queue.hpp"
-#include "biblioteca/tads/Coll.hpp"
-#include "principal.cpp"
+#include <stdlib.h>
+#include <string.h>
+#include "compresor.hpp"
+#include "descompresor.hpp"
 
+struct InfoByte
+{
+   unsigned int n; // cuantas veces aparece el byte
+   string cod;
+};
 
-
+void inicInfoByte(InfoByte arr[]);
+void comprimir(string nomArchOri);
+void descomprimir(string nomArchCompr);
 
 
 #endif
