@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "biblioteca/funciones/strings.hpp"
 #include "biblioteca/funciones/arrays.hpp"
 #include "biblioteca/funciones/lists.hpp"
@@ -18,6 +20,8 @@
 #include "biblioteca/tads/huffman/BitReader.hpp"
 #include "biblioteca/tads/huffman/BitWriter.hpp"
 #include "infoByte.hpp"
+
+using namespace std;
 
 void paso1(string nomArchOri,InfoByte arr[]);
 List<HuffmanTreeInfo> paso2(InfoByte arr[]);
