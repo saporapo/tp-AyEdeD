@@ -26,7 +26,7 @@ void paso1Desc(string nomArchCompr,InfoByte arr[],int& pos)
       arr[q].cod=cod;
       cont++;
    }
-   pos=filePos<char>(f)+1;
+   pos=filePos<char>(f);
 
    fclose(f);
 }
@@ -45,24 +45,23 @@ void paso2Desc(string nomArchCompr,InfoByte arr[],int pos)
 
    FILE* g=fopen(newName.c_str(),"w+b");
 
-   int bit=bitReaderRead(br);
-
    string e="";
 
       for(int i=0;i<r*8;i++)
       {
+         int bit=bitReaderRead(br);
+
          e+=intToChar(bit);
 
          for(int z=0;z<256;z++)
          {
-            if(e==arr[z].cod and arr[z].n==1)
+            if(e==arr[z].cod)
             {
                write<char>(g,z);
                e="";
+               break;
             }
          }
-
-         bit=bitReaderRead(br);
       }
 
    fclose(g);

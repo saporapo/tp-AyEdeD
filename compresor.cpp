@@ -46,8 +46,8 @@ HuffmanTreeInfo* paso3(List<HuffmanTreeInfo>& hTI)
 
    for( int a=0; listSize<HuffmanTreeInfo>(hTI)>1 ; a++ )//se vacia la lista
       {//se usa una funcion que remueve un puntero
-         HuffmanTreeInfo* r1=listRemoveFirstP<HuffmanTreeInfo>(hTI);
-         HuffmanTreeInfo* r2=listRemoveFirstP<HuffmanTreeInfo>(hTI);
+         HuffmanTreeInfo* r1=listRemoveFirstH<HuffmanTreeInfo>(hTI);
+         HuffmanTreeInfo* r2=listRemoveFirstH<HuffmanTreeInfo>(hTI);
 
          int r=r1->n+r2->n;
 
@@ -101,8 +101,7 @@ void paso5(string nomArchOri,InfoByte arr[])
 
          for(int a=0;s[a]!='\0';a++)
          {
-            char b=s[a];
-            write<char>(g,b);
+            write<char>(g,s[a]);
          }
          p++;
       }
@@ -123,8 +122,7 @@ void paso5(string nomArchOri,InfoByte arr[])
          string s=arr[(int)l].cod;
          for(int z=0;s[z]!='\0';z++)
          {
-            char c=s[z];
-            int v=charToInt(c);
+            int v=charToInt(s[z]);
             bitWriterWrite(bw,v);
          }
 

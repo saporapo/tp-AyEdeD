@@ -211,46 +211,5 @@ Coll<T> collFromString(string s)
 }
 
 
-
-//-----------------------------------------------
-
-
-
-struct BitWriter
-{
-   FILE* f;
-   string b;
-};
-
-BitWriter bitWriter(FILE* f)
-{
-    return {f,""};
-}
-
-void bitWriterWrite(BitWriter bw, int bit)
-{
-   bw.b+=intToString(bit);
-   if(length(bw.b)==8)
-   {
-      unsigned char c=stringToInt(bw.b);
-      write<char>(bw.f,c);
-      bw.b="";
-   }
-}
-
-void bitWriterFlush(BitWriter bw)
-{
-   if(length(bw.b)!=8)
-   {
-      while(length(bw.b)!=8)
-      {
-         bw.b+="0";
-      }
-      int i=stringToInt(bw.b);
-      bitWriterWrite(bw,i);
-   }
-}
-
-
 #endif
 

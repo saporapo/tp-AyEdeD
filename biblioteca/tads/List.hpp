@@ -48,6 +48,14 @@ Node<T>* listRemoveFirst(List<T>& lst)
    return t;
 }
 
+template<typename T>
+T* listRemoveFirstH(List<T>& lst)
+{
+   Node<T>* n = listRemoveFirst<T>(lst);
+   T* value = &n->info;
+   return value;
+}
+
 template<typename T,typename K>
 Node<T>* listFind(List<T> lst,K k,int cmpTK(T,K))
 {
