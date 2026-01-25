@@ -2,8 +2,6 @@
 
 void comprimir(string nomArchOri, InfoByte arr[])
 {
-   inicInfoByte(arr);
-
    // paso 1 - contar cuantas veces aparece cada byte
    paso1(nomArchOri,arr);
 
