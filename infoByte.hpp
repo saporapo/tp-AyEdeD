@@ -1,6 +1,9 @@
 #ifndef INFOBYTE_HPP
 #define INFOBYTE_HPP
 
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "biblioteca/funciones/strings.hpp"
 #include "biblioteca/funciones/arrays.hpp"
