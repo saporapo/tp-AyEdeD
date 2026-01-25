@@ -17,11 +17,12 @@ int main(int argc,char** argv)
 {
     string nomArch = argv[1];
     InfoByte arr[256];
+
+    inicInfoByte(arr);
  
       // comprimo o descomprimo
       if( endsWith(nomArch,".huf") )
-      {
-         inicInfoByte(arr);
+      {
          descomprimir(nomArch, arr);
       }
       else
