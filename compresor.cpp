@@ -114,12 +114,19 @@ void paso5(string nomArchOri,InfoByte arr[])
       seek<char>(g,pos);
       write<char>(g,'\n');
       // Reserve one byte to store number of valid bits in the last payload byte
-      int padInfoPos = fileSize<char>(g);
-      write<char>(g,0);
+   int padInfoPos = fileSize<char>(g);
+   write<char>(g,0);
 
-      FILE* f=fopen(nomArchOri.c_str(),"r+b");
+   // Open input file to compute original size and prepare for payload reading
+   FILE* f=fopen(nomArchOri.c_str(),"r+b");
+   unsigned long long originalSize = fileSize<char>(f);
+   // reset input file to start
+   seek<char>(f,0);
 
-      unsigned char l=read<unsigned char>(f);
+   // write original size (8 bytes) so decompressor knows exact number of bytes to recreate
+   write<unsigned long long>(g, originalSize);
+
+   unsigned char l=read<unsigned char>(f);
       while(!feof(f))
       {
          string s=arr[(int)l].cod;

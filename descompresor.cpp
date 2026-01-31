@@ -51,9 +51,11 @@ void paso2Desc(string nomArchCompr,InfoByte arr[],int pos)
    // read valid bits (1..8)
    unsigned char validBits = read<unsigned char>(f);
 
-   // Remaining payload length in bytes
-   // We consumed two bytes: the newline separator and the validBits byte
-   int payloadBytes = r - 2; 
+   // read original size (number of bytes in original file)
+   unsigned long long originalSize = read<unsigned long long>(f);
+
+   // Remaining payload length in bytes (after newline, validBits and originalSize)
+   int payloadBytes = r - 2 - (int)sizeof(unsigned long long);
 
    int p=indexOf(nomArchCompr,".huf");
 
@@ -61,23 +63,38 @@ void paso2Desc(string nomArchCompr,InfoByte arr[],int pos)
 
    FILE* g=fopen(newName.c_str(),"w+b");
 
+   // If the file had only one distinct symbol, recreate it directly without reading bits
+   int distinctCount = 0;
+   int onlySymbol = -1;
+   for(int z=0; z<256; z++)
+   {
+      if(arr[z].n > 0){ distinctCount++; onlySymbol = z; }
+   }
+
+   if(distinctCount == 1)
+   {
+      for(unsigned long long i=0;i<originalSize;i++) write<char>(g,(char)onlySymbol);
+      fclose(g);
+      fclose(f);
+      return;
+   }
+
    string e="";
 
-   // total useful bits in payload
-   int totalBits = payloadBytes * 8 - (8 - (int)validBits);
-
-   for(int i=0;i<totalBits;i++)
+   // decode until we've written originalSize bytes (ignore potential padding bits)
+   unsigned long long written = 0;
+   while(written < originalSize)
    {
-      int bit=bitReaderRead(br);
+      int bit = bitReaderRead(br);
+      e += intToChar(bit);
 
-      e+=intToChar(bit);
-
-      for(int z=0;z<256;z++)
+      for(int z=0; z<256; z++)
       {
-         if(e==arr[z].cod)
+         if(e == arr[z].cod)
          {
-            write<char>(g,z);
-            e="";
+            write<char>(g, z);
+            e = "";
+            written++;
             break;
          }
       }
