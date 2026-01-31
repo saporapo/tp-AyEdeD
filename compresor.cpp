@@ -111,8 +111,11 @@ void paso5(string nomArchOri,InfoByte arr[])
    write<char>(g,p);
 
    int pos = fileSize<char>(g);
-   seek<char>(g,pos);
-   write<char>(g,'\n');
+      seek<char>(g,pos);
+      write<char>(g,'\n');
+      // Reserve one byte to store number of valid bits in the last payload byte
+      int padInfoPos = fileSize<char>(g);
+      write<char>(g,0);
 
       FILE* f=fopen(nomArchOri.c_str(),"r+b");
 
@@ -129,8 +132,18 @@ void paso5(string nomArchOri,InfoByte arr[])
          l=read<unsigned char>(f);
       }
 
+      // capture pending bits before flush
+      int pendingBits = bw.nbits; // 0..7
       bitWriterFlush(bw);
 
+      // Compute valid bits in last written byte: if pendingBits==0 then last byte was full (8 valid bits)
+      int validBits = (pendingBits == 0) ? 8 : pendingBits;
+
+   // (debug prints removed)
+
+   // Write the validBits value into the reserved pad-info byte
+   seek<char>(g,padInfoPos);
+   write<char>(g,(char)validBits);
 
       fclose(g);
       fclose(f);

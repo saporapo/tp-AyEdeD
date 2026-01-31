@@ -35,9 +35,25 @@ void paso2Desc(string nomArchCompr,InfoByte arr[],int pos)
 {
    FILE* f=fopen(nomArchCompr.c_str(),"r+b");
    BitReader br=bitReader(f);
-
    int r=fileSize<char>(f)-pos;
    seek<char>(f,pos);
+
+   // Skip the newline separator and read the valid-bits info byte
+   // (the compressor writes a '\n' then a byte with number of valid bits in last payload byte)
+   if(r <= 0)
+   {
+      fclose(f);
+      return;
+   }
+
+   // consume the newline
+   read<char>(f);
+   // read valid bits (1..8)
+   unsigned char validBits = read<unsigned char>(f);
+
+   // Remaining payload length in bytes
+   // We consumed two bytes: the newline separator and the validBits byte
+   int payloadBytes = r - 2; 
 
    int p=indexOf(nomArchCompr,".huf");
 
@@ -47,22 +63,25 @@ void paso2Desc(string nomArchCompr,InfoByte arr[],int pos)
 
    string e="";
 
-      for(int i=0;i<r*8;i++)
+   // total useful bits in payload
+   int totalBits = payloadBytes * 8 - (8 - (int)validBits);
+
+   for(int i=0;i<totalBits;i++)
+   {
+      int bit=bitReaderRead(br);
+
+      e+=intToChar(bit);
+
+      for(int z=0;z<256;z++)
       {
-         int bit=bitReaderRead(br);
-
-         e+=intToChar(bit);
-
-         for(int z=0;z<256;z++)
+         if(e==arr[z].cod)
          {
-            if(e==arr[z].cod)
-            {
-               write<char>(g,z);
-               e="";
-               break;
-            }
+            write<char>(g,z);
+            e="";
+            break;
          }
       }
+   }
 
    fclose(g);
    fclose(f);

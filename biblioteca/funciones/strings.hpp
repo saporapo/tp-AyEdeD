@@ -6,7 +6,7 @@
 #include <math.h>
 using namespace std;
 
-int length(string s)
+inline int length(string s)
 {
    //cuenta los caracteres de s.
    int i=0;
@@ -17,7 +17,7 @@ int length(string s)
   return i;
 }
 
-int charCount(string s,char c)
+inline int charCount(string s,char c)
 {
    //cuenta las veces q aparece c en s.
    int a=0;
@@ -33,7 +33,7 @@ int charCount(string s,char c)
      return a;
 }
 
-string substring(string s,int d,int h)
+inline string substring(string s,int d,int h)
 {
    //retorna s entre d(include) y h (no include)
    string g="";
@@ -46,7 +46,7 @@ string substring(string s,int d,int h)
    return g;
 }
 
-string substring(string s,int d) // ok
+inline string substring(string s,int d) // ok
 {
    //retorna s desde d(include).
    string g="";
@@ -59,7 +59,7 @@ string substring(string s,int d) // ok
    return g;
 }
 
-int indexOf(string s,char c) // ok
+inline int indexOf(string s,char c) // ok
 {
    //retorna posicion de la 1ra ocurrencia de c en s.
       int i=0;
@@ -74,7 +74,7 @@ int indexOf(string s,char c) // ok
    return i;
 }
 
-int indexOf(string s,char c,int offSet) // ok
+inline int indexOf(string s,char c,int offSet) // ok
 {
    //busca c en s desde offset
    int i=offSet;
@@ -89,7 +89,7 @@ int indexOf(string s,char c,int offSet) // ok
    return i;
 }
 
-int indexOf(string s,string toSearch) // ok
+inline int indexOf(string s,string toSearch) // ok
 {
    //retorna la 1ra posicion de la cadena toSearch si s la contiene
    int i=0, a=0;
@@ -114,21 +114,21 @@ int indexOf(string s,string toSearch) // ok
    return -1;
 }
 
-void permutaInt(int& a, int& b)
+inline void permutaInt(int& a, int& b)
 {
    int aux=a;
    a=b;
    b=aux;
 }
 
-void permutaStr(string& a, string& b)
+inline void permutaStr(string& a, string& b)
 {
    string aux=a;
    a=b;
    b=aux;
 }
 
-int indexOf(string s,string toSearch,int offset) // ok
+inline int indexOf(string s,string toSearch,int offset) // ok
 {
    //retorna la 1ra posicion de la cadena toSearch desde offset si s la contiene
    int i=offset;
@@ -144,7 +144,7 @@ int indexOf(string s,string toSearch,int offset) // ok
    return -1;
 }
 
-int lastIndexOf(string s,char c)
+inline int lastIndexOf(string s,char c)
 {
    //retorna la ultima aparicion de c en s.
    int i=length(s)-1;
@@ -159,7 +159,7 @@ int lastIndexOf(string s,char c)
    return i;
 }
 
-int indexOfN(string s,char c,int n)
+inline int indexOfN(string s,char c,int n)
 {
    //retorna la posicion de la aparicion num n de c en s.
    int i=0;
@@ -184,7 +184,7 @@ int indexOfN(string s,char c,int n)
    return i;
 }
 
-int charToInt(char c)
+inline int charToInt(char c)
 {
    //pasa un char a int.
    int i=0;
@@ -198,7 +198,7 @@ int charToInt(char c)
    return i;
 }
 
-char intToChar(int i)
+inline char intToChar(int i)
 {
    //convierte un int(entre 0-9 o 65-90) en un char.
    char b=48;
@@ -216,7 +216,7 @@ char intToChar(int i)
    return b;
 }
 
-int getDigit(int n,int i)
+inline int getDigit(int n,int i)
 {
    //retorna el digito en la posicion i de n
    int a;
@@ -236,7 +236,7 @@ int getDigit(int n,int i)
    return a;
 }
 
-int digitCount(int n)
+inline int digitCount(int n)
 {
    //retorna la cantidad de digitos de n.
    int i=0;
@@ -252,7 +252,7 @@ int digitCount(int n)
    return i;
 }
 
-string intToString(int i)
+inline string intToString(int i)
 {
    //pasa un int a string
    string h="";
@@ -279,7 +279,7 @@ string intToString(int i)
    return h;
 }
 
-int stringToInt(string s,int b) // ok
+inline int stringToInt(string s,int b) // ok
 {
    //pasa un string a int multiplicando cada posicion x b elevado a la vez n iterado
    int r=0;
@@ -301,13 +301,13 @@ int stringToInt(string s,int b) // ok
    return r;
 }
 
-int stringToInt(string s) // ok
+inline int stringToInt(string s) // ok
 {
    //retorna el s como int multiplicandolo x10 elevado a las veces iterado
    return stringToInt(s,10);
 }
 
-string charToString(char c)
+inline string charToString(char c)
 {
    //pasa el char a un string de longitud 1
    string g="";
@@ -315,14 +315,14 @@ string charToString(char c)
    return g;
 }
 
-char stringToChar(string s)
+inline char stringToChar(string s)
 {
    //pasa un string de length 1 a char
    char c=s[0];
    return c;
 }
 
-string stringToString(string s)
+inline string stringToString(string s)
 {
    //pasa un string a string
    string g="";
@@ -333,7 +333,7 @@ string stringToString(string s)
    return g;
 }
 
-string doubleToString(double d)
+inline string doubleToString(double d)
 {
    //pasa un double a string
    string s="";
@@ -351,7 +351,7 @@ string doubleToString(double d)
    return s;
 }
 
-double stringToDouble(string s)
+inline double stringToDouble(string s)
 {
    //pasa un string a double
    double d=0;
@@ -385,7 +385,7 @@ double stringToDouble(string s)
    return d;
 }
 
-bool isEmpty(string s)
+inline bool isEmpty(string s)
 {
    //verifica si el string es o no vacio
    bool r=false;
@@ -396,7 +396,7 @@ bool isEmpty(string s)
    return r;
 }
 
-bool startsWith(string s,string x)
+inline bool startsWith(string s,string x)
 {
    //verifica si s comienza con x
    bool r=false;
@@ -408,28 +408,17 @@ bool startsWith(string s,string x)
    return r;
 }
 
-bool endsWith(string s,string x)
+inline bool endsWith(string s,string x)
 {
-   //verifica si s termina con x
-   bool r=false;
-   int i=0;
-   while(s[i]!='\0' and s[i]!=x[0])
-   {
-      i++;
-   }
-   string h;
-   if(s[i]!='\0' and s[i]==x[0])
-   {
-      h=substring(s,i,i+length(x));
-   }
-   if(x==h)
-      {
-         r=true;
-      }
-   return r;
+   // verifica si s termina con x (implementacion segura usando longitudes)
+   int ls = length(s);
+   int lx = length(x);
+   if(lx > ls) return false;
+   string tail = substring(s, ls - lx, ls);
+   return tail == x;
 }
 
-bool contains(string s,char c)
+inline bool contains(string s,char c)
 {
    //determ si s contiene a c
    bool r=false;
@@ -440,7 +429,7 @@ bool contains(string s,char c)
    return r;
 }
 
-string replace(string s,char oldC,char newC)
+inline string replace(string s,char oldC,char newC)
 {
    //reemplaza en s el oC c nC
    string g="";
@@ -463,7 +452,7 @@ string replace(string s,char oldC,char newC)
    return g;
 }
 
-string insertAt(string s,int pos,char c)
+inline string insertAt(string s,int pos,char c)
 {
    //agrega c en s en la posicion pos
    string g="";
@@ -485,7 +474,7 @@ string insertAt(string s,int pos,char c)
    return g;
 }
 
-string removeAt(string s,int pos)
+inline string removeAt(string s,int pos)
 {
    //remueve el caracter de s en la posicion pos
    string g="";
@@ -507,7 +496,7 @@ string removeAt(string s,int pos)
    return g;
 }
 
-string ltrim(string s)
+inline string ltrim(string s)
 {
    //remueve los espacios a la izq de s
    string g="";
@@ -525,7 +514,7 @@ string ltrim(string s)
    return g;
 }
 
-string rtrim(string s)
+inline string rtrim(string s)
 {
    //remueve los espacios a la der de s
    string g="";
@@ -538,7 +527,7 @@ string rtrim(string s)
    return g;
 }
 
-string trim(string s)
+inline string trim(string s)
 {
    //remueve los espacios de izq y der de s
    string h;
@@ -547,7 +536,7 @@ string trim(string s)
    return h;
 }
 
-string replicate(char c,int n)
+inline string replicate(char c,int n)
 {
    //genera un string con n veces c
    string g="";
@@ -560,7 +549,7 @@ string replicate(char c,int n)
    return g;
 }
 
-string spaces(int n)
+inline string spaces(int n)
 {
    //genera un string con n cant de espacios
    string g="";
@@ -573,7 +562,7 @@ string spaces(int n)
    return g;
 }
 
-string lpad(string s,int n,char c)
+inline string lpad(string s,int n,char c)
 {
    //retorna s en la longitud n rellenando con c a la izq en caso de ser n mayor
    string g="";
@@ -595,7 +584,7 @@ string lpad(string s,int n,char c)
    return g;
 }
 
-string rpad(string s,int n,char c)
+inline string rpad(string s,int n,char c)
 {
    //retorna s en la longitud n rellenando con c a la der en caso de ser n mayor
    string g="";
@@ -616,12 +605,12 @@ string rpad(string s,int n,char c)
       return g;
 }
 
-string cpad(string s,int n,char c)
+inline string cpad(string s,int n,char c)
 {
    return "";
 }
 //es igual a lpad
-bool isDigit(char c)
+inline bool isDigit(char c)
 {
    //determ si c es un numero
    bool r=false;
@@ -632,7 +621,7 @@ bool isDigit(char c)
    return r;
 }
 
-bool isLetter(char c)
+inline bool isLetter(char c)
 {
    //determ si c es una letra
    bool r=false;
@@ -643,7 +632,7 @@ bool isLetter(char c)
    return r;
 }
 
-bool isUpperCase(char c)
+inline bool isUpperCase(char c)
 {
    //determ si c es letra mayus
    bool r=false;
@@ -654,7 +643,7 @@ bool isUpperCase(char c)
    return r;
 }
 
-bool isLowerCase(char c)
+inline bool isLowerCase(char c)
 {
    //determ si c es letra minus
    bool r=false;
@@ -665,7 +654,7 @@ bool isLowerCase(char c)
    return r;
 }
 
-char toUpperCase(char c)
+inline char toUpperCase(char c)
 {
    //pasa c, letra minus, a mayus
    char a;
@@ -678,7 +667,7 @@ char toUpperCase(char c)
    return a;
 }
 
-char toLowerCase(char c)
+inline char toLowerCase(char c)
 {
    //pasa c, letra mayus, a minus
    char a;
@@ -691,7 +680,7 @@ char toLowerCase(char c)
    return a;
 }
 
-string toUpperCase(string s)
+inline string toUpperCase(string s)
 {
    string g="";
    int i=0;
@@ -705,7 +694,7 @@ string toUpperCase(string s)
    return g;
 }
 
-string toLowerCase(string s)
+inline string toLowerCase(string s)
 {
    string g="";
       int i=0;
@@ -719,19 +708,19 @@ string toLowerCase(string s)
    return g;
 }
 
-int cmpInt(int t,int k) //creado
+inline int cmpInt(int t,int k) //creado
 {
    //compara ints de coll
    return t-k;
 }
 
-int cmpStr(string t1, string t2)
+inline int cmpStr(string t1, string t2)
 {
    //compara strings de coll
    return t1<t2?-1:t1>t2?1:0;
 }
 
-int cmpDouble(double t,double k) //creado
+inline int cmpDouble(double t,double k) //creado
 {
    //compara ints de coll
    return t-k;

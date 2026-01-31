@@ -32,45 +32,34 @@ using namespace std;
 struct BitReader
 {
    FILE* f;
-   unsigned int bL;
-   int contB;
+   unsigned char buffer;
+   int nbits; // number of bits remaining in buffer (0..7)
 };
 
-BitReader bitReader(FILE* f)
+inline BitReader bitReader(FILE* f)
 {
-    return {f,0,0};
+    BitReader br;
+    br.f = f;
+    br.buffer = 0;
+    br.nbits = 0;
+    return br;
 }
 
-int bitReaderRead(BitReader& br)
+inline int bitReaderRead(BitReader& br)
 {
-   //leer byte, pasar de char a int, de int a string y sacar el s[0] [contB], pasarlo a int
-   // sumar 1 al contador y retornar
-   //no debo leer el siguiente byte, hasta q haya retornado s[8] y contB debe volver a 0
-   if(br.contB==0)
+   // If no bits buffered, read a new byte
+   if(br.nbits == 0)
    {
-      br.bL=read<unsigned char>(br.f);
+      unsigned char c = read<unsigned char>(br.f);
+      br.buffer = c;
+      br.nbits = 8;
    }
 
-   int i=charToInt(br.bL);
-   string s=intToString(i);
-
-   // Asegurar 8 bits
-   while(length(s) < 8)
-   {
-      s = "0" + s;
-   }
-
-   int bit = charToInt(s[br.contB]);
-
-   br.contB++;
-   if(br.contB == 8)
-   {
-      br.contB = 0;
-   }
-
+   // return the next bit (MSB first)
+   int bit = (br.buffer >> (br.nbits - 1)) & 1;
+   br.nbits--;
    return bit;
 }
-
 
 #endif
 

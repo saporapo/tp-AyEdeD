@@ -24,36 +24,42 @@ using namespace std;
 struct BitWriter
 {
    FILE* f;
-   string b;
+   unsigned char buffer;
+   int nbits; // number of bits currently in buffer (0..7)
 };
 
-BitWriter bitWriter(FILE* f)
+inline BitWriter bitWriter(FILE* f)
 {
-    return {f,""};
+    BitWriter bw;
+    bw.f = f;
+    bw.buffer = 0;
+    bw.nbits = 0;
+    return bw;
 }
 
-void bitWriterWrite(BitWriter& bw, int bit)
+inline void bitWriterWrite(BitWriter& bw, int bit)
 {
-   bw.b+=intToString(bit);
-   if(length(bw.b)==8)
+   // write bits MSB first: the first written bit becomes the most significant in the full byte
+   bw.buffer = (unsigned char)((bw.buffer << 1) | (bit & 1));
+   bw.nbits++;
+   if(bw.nbits == 8)
    {
-      unsigned char c=stringToInt(bw.b);
-      write<char>(bw.f,c);
-      bw.b="";
+      unsigned char c = bw.buffer;
+      write<unsigned char>(bw.f, c);
+      bw.buffer = 0;
+      bw.nbits = 0;
    }
 }
 
-void bitWriterFlush(BitWriter& bw)
+inline void bitWriterFlush(BitWriter& bw)
 {
-   if(length(bw.b) > 0)
+   if(bw.nbits > 0)
    {
-      while(length(bw.b) < 8)
-      {
-         bw.b+="0";
-      }
-      unsigned char c=stringToInt(bw.b);
-      write<char>(bw.f,c);
-      bw.b="";
+      // shift the remaining bits to the MSB positions
+      bw.buffer = (unsigned char)(bw.buffer << (8 - bw.nbits));
+      write<unsigned char>(bw.f, bw.buffer);
+      bw.buffer = 0;
+      bw.nbits = 0;
    }
 }
 

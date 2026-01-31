@@ -15,7 +15,7 @@ struct HuffmanTreeInfo
    HuffmanTreeInfo* right;
 };
 
-HuffmanTreeInfo* huffmanTreeInfo(int c, long n, HuffmanTreeInfo* left, HuffmanTreeInfo* right)
+inline HuffmanTreeInfo* huffmanTreeInfo(int c, long n, HuffmanTreeInfo* left, HuffmanTreeInfo* right)
 {
    HuffmanTreeInfo* node = new HuffmanTreeInfo();
    node->c=c;
@@ -36,7 +36,7 @@ struct HuffmanTree
 };
 
 // init function
-HuffmanTree huffmanTree(HuffmanTreeInfo* root)
+inline HuffmanTree huffmanTree(HuffmanTreeInfo* root)
 {
    HuffmanTree tu;
    tu.pila = stack<HuffmanTreeInfo*>();
@@ -46,12 +46,12 @@ HuffmanTree huffmanTree(HuffmanTreeInfo* root)
    return tu;
 }
 
-bool huffmanTreeHasNext(HuffmanTree ht)
+inline bool huffmanTreeHasNext(HuffmanTree ht)
 {
    return !stackIsEmpty<HuffmanTreeInfo*>(ht.pila);
 }
 
-HuffmanTreeInfo* huffmanTreeNext(HuffmanTree& tu,string& cod)
+inline HuffmanTreeInfo* huffmanTreeNext(HuffmanTree& tu,string& cod)
 {
    bool hoja=false;
    HuffmanTreeInfo* p = NULL;
@@ -94,7 +94,7 @@ HuffmanTreeInfo* huffmanTreeNext(HuffmanTree& tu,string& cod)
    return p;
 }
 
-HuffmanTreeInfo* huffmanTreeCreateDemoTree()
+inline HuffmanTreeInfo* huffmanTreeCreateDemoTree()
 {
    // nivel 5 (ultimo nivel)
    HuffmanTreeInfo* nS = huffmanTreeInfo('S', 1, NULL, NULL);
@@ -135,7 +135,7 @@ HuffmanTreeInfo* huffmanTreeCreateDemoTree()
    return a11;
 }
 
-void huffmanTreeDemo()
+inline void huffmanTreeDemo()
 {
    // obtengo el arbol
    HuffmanTreeInfo* root = huffmanTreeCreateDemoTree();

@@ -22,7 +22,7 @@ int main(int argc,char** argv)
  
       // comprimo o descomprimo
       if( endsWith(nomArch,".huf") )
-      {
+      {
          descomprimir(nomArch, arr);
       }
       else

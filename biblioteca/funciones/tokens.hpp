@@ -6,7 +6,7 @@
 #include "strings.hpp"
 using namespace std;
 
-int tokenCount(string s,char sep)//te dice cuantos tokens hay en base al numero de separadores
+inline int tokenCount(string s,char sep)//te dice cuantos tokens hay en base al numero de separadores
 {
    int a=0;
    int i=0;
@@ -21,7 +21,7 @@ int tokenCount(string s,char sep)//te dice cuantos tokens hay en base al numero 
    return a+1;
 }
 
-void addToken(string& s,char sep,string t)//añade un token nuevecito al final del string
+inline void addToken(string& s,char sep,string t)//añade un token nuevecito al final del string
 {
    if(s=="")
    {
@@ -33,7 +33,7 @@ void addToken(string& s,char sep,string t)//añade un token nuevecito al final d
    }
 }
 
-string getTokenAt(string s,char sep, int i)
+inline string getTokenAt(string s,char sep, int i)
 {
    string r="";
    int pos=indexOfN(s,sep,i--);
@@ -45,7 +45,7 @@ string getTokenAt(string s,char sep, int i)
    return r;
 }
 
-void removeTokenAt(string& s,char sep, int i)
+inline void removeTokenAt(string& s,char sep, int i)
 {
    string r="";
    int a=0;
@@ -85,7 +85,7 @@ else
 
 }
 
-void setTokenAt(string& s,char sep,string t,int i)
+inline void setTokenAt(string& s,char sep,string t,int i)
 {
    string r="";
    int a=0;
@@ -128,7 +128,7 @@ void setTokenAt(string& s,char sep,string t,int i)
    }
 }
 
-int findToken(string s,char sep, string t)
+inline int findToken(string s,char sep, string t)
 {
 //devuelve num de token
 //con pos-- tengo el sep
