@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -I./biblioteca
 
-SRC = principal.cpp compresor.cpp descompresor.cpp AyEdeD-TP-K.cpp
+SRC = principal.cpp compresor.cpp descompresor.cpp infoByte.cpp AyEdeD-TP-K.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = huffman
 

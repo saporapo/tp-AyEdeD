@@ -28,17 +28,8 @@ struct InfoByte
    string cod;
 };
 
-InfoByte infoByte()
-{
-   return {0,""};
-}
+InfoByte infoByte();
 
-void inicInfoByte(InfoByte a[])
-{
-   for(int i=0; i<256; i++)
-   {
-      a[i]=infoByte();
-   }
-}
+void inicInfoByte(InfoByte a[]);
 
 #endif
