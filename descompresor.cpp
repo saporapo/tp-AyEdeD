@@ -48,14 +48,15 @@ void paso2Desc(string nomArchCompr,InfoByte arr[],int pos)
 
    // consume the newline
    read<char>(f);
-   // read valid bits (1..8)
+   // read valid bits (1..8) -- still consume the byte but we don't need the value
    unsigned char validBits = read<unsigned char>(f);
+   (void)validBits;
 
    // read original size (number of bytes in original file)
    unsigned long long originalSize = read<unsigned long long>(f);
 
    // Remaining payload length in bytes (after newline, validBits and originalSize)
-   int payloadBytes = r - 2 - (int)sizeof(unsigned long long);
+   // Not used because we rely on originalSize to stop decoding
 
    int p=indexOf(nomArchCompr,".huf");
 
