@@ -2,7 +2,7 @@
 
 Proyecto de compresión / descompresión Huffman (TP)
 
-Este repositorio contiene una implementación educativa de compresión Huffman en C++.
+Este repositorio contiene una implementación educativa de des/compresión Huffman en C++.
 
 ## Compilar
 
